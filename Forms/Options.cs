@@ -55,9 +55,8 @@ namespace Hood.Core
             _quitKey.SelectedIndexChanged += QuitKeySelected;
             _modifierKey.SelectedIndexChanged += MuteModSelected;
             _keys.SelectedIndexChanged += MuteKeySelected;
-            _applyButton.MouseUp += ApplySettings;
+            _applyButton.MouseUp += ApplyButtonPressed;
         }
-
         private void GoGithub(object sender, MouseEventArgs e)
         {
             //will still open in the default browser ie: chrome/firefox etc but needs "explorer" cause .netcore
@@ -102,9 +101,14 @@ namespace Hood.Core
         {
             MicMuter.Settings.qKey = (Keys)_quitKey.SelectedValue;
         }
+        //used for the apply button event to enable default applysettings method to work from elsewhere
+        private void ApplyButtonPressed(object sender, MouseEventArgs e)
+        {
+            ApplySettings();
+        }
         //when applied make sure to change the settings in the main settings var located in main form 
         //reregister the hotkeys within keyboard script 
-        private void ApplySettings(object sender, MouseEventArgs e)
+        public void ApplySettings()
         {
             //set if the speech is muted in settings
             MicMuter.Settings.MuteSpeech = _speechMuted;
@@ -132,7 +136,7 @@ namespace Hood.Core
     }
     public class Settings
     {
-        public bool FirstRun { get; set; }
+        public bool IsFirstRun { get; set; }
         public bool MuteSpeech { get; set; }
         public ModifierKeys qModifierKeys { get; set; }
         public ModifierKeys mModifierKeys { get; set; }

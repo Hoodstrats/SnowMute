@@ -6,6 +6,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>spr\SnowballIcon.ico</ApplicationIcon>
     <RootNamespace>Hood.Core</RootNamespace>
+    <Company>Hoodstrats</Company>
+    <Authors>SnowMute</Authors>
+    <Description>Simple Gobal Mic muter using hotkeys</Description>
+    <Copyright>Hoodstrats 2022</Copyright>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,10 +36,6 @@
     <None Update="SPR\SnowballUnmuted.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Forms\" />
   </ItemGroup>
 
 </Project>

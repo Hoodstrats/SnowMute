@@ -31,7 +31,7 @@ namespace Hood.Core
         //construct new instance of the class
         CoreAudioController _controller { get; } = new CoreAudioController();
         static SpeechSynthesizer _synth { get; } = new SpeechSynthesizer();
-
+        
         public MicMuter()
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace Hood.Core
             SetupTrayIcon();
             
             InitSynthSpeech();
-            
+
             ToggleButtonInfo();
 
             //need to reregister these whenever options are changed 
@@ -64,6 +64,7 @@ namespace Hood.Core
             //open form with about and website link etc upon first run 
             FirstRun();
         }
+
         CoreAudioDevice GetDefaultInputDevice() => _controller.GetCaptureDevices(DeviceState.Active).FirstOrDefault(o => o.IsDefaultDevice);
         
         //call again from options menu if checkbox is unchecked and apply is pressed
@@ -79,7 +80,7 @@ namespace Hood.Core
 
         private void FirstRun()
         {
-           if(_settings.FirstRun == false)
+           if(_settings.IsFirstRun == false)
             {
                 FirstRunDiag fr = new FirstRunDiag
                 {
@@ -87,7 +88,7 @@ namespace Hood.Core
                 };
                 //this actually centers the form to this one without any extra fuss unlike Show()
                 fr.ShowDialog(this);
-                _settings.FirstRun = true;
+                _settings.IsFirstRun = true;
                 SaveManager.Save(_settings);
             }
         }
